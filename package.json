@@ -1,0 +1,24 @@
+{
+  "name": "twilio-watson-conversation-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skylarkgit/Twilio-Watson-Conversation-.git"
+  },
+  "author": "tanmaybakshi,skylarkgit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skylarkgit/Twilio-Watson-Conversation-/issues"
+  },
+  "homepage": "https://github.com/skylarkgit/Twilio-Watson-Conversation-#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ibm-watson": "^4.4.0",
+    "twilio": "^3.34.0"
+  }
+}

@@ -1,5 +1,5 @@
 var express = require('express');
-var ConversationV1 = require('watson-developer-cloud/conversation/v1');
+var AssitantV1 = require('ibm-watson/assistant/v1');
 
 var app = express();
 
@@ -24,10 +24,11 @@ app.get('/smssent', function (req, res) {
 
   console.log('Recieved message from ' + number + ' saying \'' + message  + '\'');
 
-  var conversation = new ConversationV1({
-    username: '',
-    password: '',
-    version_date: ConversationV1.VERSION_DATE_2016_09_20
+  var conversation = new AssitantV1({
+    disable_ssl_verification: true,
+    iam_apikey: "<iam_apikey>",
+    url: "<api_url>",
+    version: '2018-02-16'
   });
 
   console.log(JSON.stringify(context));
@@ -35,7 +36,7 @@ app.get('/smssent', function (req, res) {
 
   conversation.message({
     input: { text: message },
-    workspace_id: '',
+    workspace_id: '<workspace_id>',
     context: context
    }, function(err, response) {
        if (err) {
@@ -48,7 +49,7 @@ app.get('/smssent', function (req, res) {
            contexts[contextIndex].context = response.context;
          }
 
-         var intent = response.intents[0].intent;
+         var intent = response.intents[0] && response.intents[0].intent;
          console.log(intent);
          if (intent == "done") {
            //contexts.splice(contexts.indexOf({'from': number, 'context': response.context}),1);
